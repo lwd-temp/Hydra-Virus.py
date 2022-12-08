@@ -36,8 +36,8 @@ class Hydra:
         # Play a sound
         self.play_sound()
         # Create two new threads and call the function call_hydra
-        hydra_thread_1 = threading.Thread(target=call_hydra)
-        hydra_thread_2 = threading.Thread(target=call_hydra)
+        hydra_thread_1 = threading.Thread(target=self.call_hydra)
+        hydra_thread_2 = threading.Thread(target=self.call_hydra)
         # Start the threads
         hydra_thread_1.start()
         hydra_thread_2.start()
@@ -45,12 +45,12 @@ class Hydra:
         hydra_thread_1.join()
         hydra_thread_2.join()
 
-
-def call_hydra():
-    # Create a new Hydra object
-    hydra = Hydra()
-    return hydra
+    def call_hydra(self):
+        # Create a new Hydra object
+        hydra = self.__class__()
+        return hydra
 
 
 if __name__ == "__main__":
-    call_hydra()
+    # Create a new Hydra object
+    hydra = Hydra()
