@@ -1,5 +1,5 @@
-import tkinter
 import threading
+import tkinter
 
 
 class Hydra:
@@ -37,18 +37,8 @@ class Hydra:
 def call_hydra():
     # Create a new Hydra object
     hydra = Hydra()
-
-
-def call_hydra_thread():
-    # Create a new thread and call the function call_hydra
-    hydra_thread = threading.Thread(target=call_hydra)
-    # Start the thread
-    hydra_thread.start()
-    # If thread ends, it will be called
-    hydra_thread.join()
-    # Open another window
-    # call_hydra_thread()
+    return hydra
 
 
 if __name__ == "__main__":
-    call_hydra_thread()
+    call_hydra()
