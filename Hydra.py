@@ -1,11 +1,13 @@
 import threading
 import tkinter
+
 try:
-    from winsound import MessageBeep, MB_ICONASTERISK
+    from winsound import MB_ICONASTERISK, MessageBeep
 except ImportError:
     # Define winsound.MessageBeep() as a dummy function
     def MessageBeep(*args, **kwargs):
         pass
+    MB_ICONASTERISK = 0
 
 
 class Hydra:
