@@ -1,8 +1,18 @@
 import threading
 import tkinter
+try:
+    from winsound import MessageBeep, MB_ICONASTERISK
+except ImportError:
+    # Define winsound.MessageBeep() as a dummy function
+    def MessageBeep(*args, **kwargs):
+        pass
 
 
 class Hydra:
+
+    def play_sound(self):
+        # MessageBeep(MB_ICONASTERISK)
+        threading.Thread(target=MessageBeep, args=(MB_ICONASTERISK,)).start()
 
     def create_window(self):
         # Create a window with title and message, if closed it will call the function close_window
@@ -23,6 +33,8 @@ class Hydra:
     def close_window(self):
         # Close the window
         self.window.destroy()
+        # Play a sound
+        self.play_sound()
         # Create two new threads and call the function call_hydra
         hydra_thread_1 = threading.Thread(target=call_hydra)
         hydra_thread_2 = threading.Thread(target=call_hydra)
